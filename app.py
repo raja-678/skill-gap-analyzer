@@ -226,7 +226,8 @@ if page.startswith("🔍"):
                 marker_color=colors,
                 text=[f"{val}/10" if skill in user_skills else "❌ Missing"
                       for skill, val in zip(all_skills, skill_values)],
-                textposition="outside"
+                textposition="outside",
+                textfont=dict(color='black')  # This makes all text black/dark
             )
         ])
         fig.update_layout(

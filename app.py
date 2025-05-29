@@ -56,7 +56,7 @@ resource_links = {
   "React": "https://reactjs.org/",
   "Linux": "https://ubuntu.com/tutorials",
   "Docker": "https://docker-curriculum.com/",
-  "CI/CD": "https://www.atlassian.com/continuous-delivery",
+  "Ci/Cd": "https://www.atlassian.com/continuous-delivery",
   "Cloud": "https://www.aws.training/",
   "Figma": "https://www.figma.com/resources/learn-design/",
   "Excel": "https://exceljet.net/",
@@ -299,7 +299,7 @@ elif page.startswith("ℹ️"):
     **Features:**
     - 📄 Upload your resume (PDF) to auto-extract skills
     - ✍️ Enter your skills manually with proficiency levels
-    - 💼 Compare yourself with 20+ professional roles
+    - 💼 Compare yourself with 35+ professional roles
     - 📊 Visualize your skill gaps
     - 🔗 Get free resources to learn what you're missing
     - 📥 Export a personalized PDF report

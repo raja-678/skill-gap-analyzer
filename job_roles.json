@@ -1,0 +1,225 @@
+{
+    "Data Analyst": {
+        "Python": 7,
+        "SQL": 8,
+        "Excel": 9,
+        "PowerBI": 6
+    },
+    "ML Engineer": {
+        "Python": 9,
+        "TensorFlow": 8,
+        "Pandas": 8,
+        "Math": 8
+    },
+    "AI Researcher": {
+        "Python": 9,
+        "Deep Learning": 9,
+        "Math": 10,
+        "NLP": 8
+    },
+    "Frontend Developer": {
+        "HTML": 9,
+        "CSS": 8,
+        "JavaScript": 9,
+        "React": 8
+    },
+    "Backend Developer": {
+        "Python": 8,
+        "Django": 8,
+        "APIs": 8,
+        "Databases": 9
+    },
+    "Full Stack Developer": {
+        "HTML": 8,
+        "CSS": 8,
+        "JavaScript": 8,
+        "Python": 8,
+        "APIs": 8
+    },
+    "DevOps Engineer": {
+        "Linux": 8,
+        "Docker": 9,
+        "CI/CD": 8,
+        "Cloud": 9
+    },
+    "Cloud Architect": {
+        "AWS": 9,
+        "Azure": 8,
+        "Networking": 8,
+        "Security": 7
+    },
+    "Product Manager": {
+        "Communication": 9,
+        "Strategy": 8,
+        "JIRA": 7,
+        "Agile": 9
+    },
+    "Business Analyst": {
+        "Excel": 9,
+        "SQL": 7,
+        "Tableau": 8,
+        "Communication": 9
+    },
+    "UI/UX Designer": {
+        "Figma": 9,
+        "User Research": 8,
+        "Adobe XD": 8,
+        "Prototyping": 8
+    },
+    "Graphic Designer": {
+        "Photoshop": 9,
+        "Illustrator": 9,
+        "Creativity": 8,
+        "InDesign": 7
+    },
+    "Digital Marketer": {
+        "SEO": 8,
+        "Google Ads": 7,
+        "Content Marketing": 8,
+        "Analytics": 8
+    },
+    "SEO Specialist": {
+        "SEO": 9,
+        "Backlinking": 8,
+        "Keyword Research": 9,
+        "Analytics": 7
+    },
+    "Security Analyst": {
+        "Cybersecurity": 9,
+        "Networking": 8,
+        "SIEM": 7,
+        "Ethical Hacking": 6
+    },
+    "Penetration Tester": {
+        "Linux": 8,
+        "Python": 7,
+        "Ethical Hacking": 9,
+        "Networking": 8
+    },
+    "Financial Analyst": {
+        "Excel": 9,
+        "Accounting": 8,
+        "Valuation": 8,
+        "PowerPoint": 7
+    },
+    "Investment Banker": {
+        "Finance": 9,
+        "Valuation": 9,
+        "PowerPoint": 8,
+        "Excel": 8
+    },
+    "Bioinformatics Analyst": {
+        "Biology": 8,
+        "Python": 7,
+        "Data Analysis": 8,
+        "Genomics": 9
+    },
+    "Clinical Researcher": {
+        "Biology": 8,
+        "Clinical Trials": 9,
+        "Regulations": 8,
+        "Data Analysis": 7
+    },
+    "Instructional Designer": {
+        "Curriculum Design": 8,
+        "Storyboarding": 7,
+        "Learning Theories": 8,
+        "Articulate 360": 7
+    },
+    "Lawyer": {
+        "Legal Research": 9,
+        "Drafting": 8,
+        "Public Speaking": 7,
+        "Legal Ethics": 9
+    },
+    "Public Policy Analyst": {
+        "Data Interpretation": 8,
+        "Policy Drafting": 9,
+        "Stakeholder Engagement": 7,
+        "Economics": 8
+    },
+    "Chemist": {
+        "Lab Techniques": 8,
+        "Spectroscopy": 7,
+        "Chemical Safety": 9,
+        "Research Writing": 8
+    },
+    "Mechanical Engineer": {
+        "CAD": 8,
+        "Thermodynamics": 8,
+        "MATLAB": 7,
+        "Fluid Mechanics": 7
+    },
+    "Content Writer": {
+        "Writing": 9,
+        "SEO": 7,
+        "Editing": 8,
+        "Research": 8
+        },
+        "Journalist": {
+        "Interviewing": 8,
+        "Writing": 9,
+        "Fact-checking": 9,
+        "Video Editing": 6
+        },
+        "Accountant": {
+        "Accounting": 9,
+        "Excel": 9,
+        "Tally": 8,
+        "Taxation": 8
+        },
+        "Medical Coder": {
+        "ICD-10": 9,
+        "Anatomy": 8,
+        "CPT Coding": 9,
+        "Medical Terminology": 8
+        },
+        "Retail Manager": {
+        "Inventory Management": 8,
+        "Customer Service": 9,
+        "Sales Strategy": 7,
+        "Team Leadership": 8
+        },
+        "Physicist": {
+        "Quantum Mechanics": 9,
+        "Data Analysis": 8,
+        "Mathematical Modelling": 8,
+        "Research Writing": 9
+        },
+        "Game Developer": {
+        "Unity": 9,
+        "C#": 8,
+        "Game Physics": 7,
+        "Graphics Optimization": 7
+        },
+        "Pilot": {
+        "Flight Navigation": 9,
+        "Aviation Safety": 8,
+        "Aircraft Systems": 9,
+        "Decision Making": 7
+        },
+        "Translator": {
+        "Multilingual Fluency": 9,
+        "Cultural Context Understanding": 8,
+        "Grammar": 9,
+        "Proofreading": 8
+        },
+        "Electrician": {
+        "Circuit Design": 9,
+        "Safety Protocols": 10,
+        "Troubleshooting": 8,
+        "Wiring": 9
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+

@@ -60,7 +60,6 @@ Including but not limited to:
 - Top 5 priority skills to learn next
 
 ### 📄 **Professional Reports**
-- Downloadable PDF skill gap reports
 - Perfect for career planning and performance reviews
 - Include all analysis results and recommendations
 

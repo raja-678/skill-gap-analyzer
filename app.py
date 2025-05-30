@@ -56,7 +56,7 @@ resource_links = {
   "React": "https://reactjs.org/",
   "Linux": "https://ubuntu.com/tutorials",
   "Docker": "https://docker-curriculum.com/",
-  "Ci/Cd": "https://www.atlassian.com/continuous-delivery",
+  "CI/CD": "https://www.atlassian.com/continuous-delivery",
   "Cloud": "https://www.aws.training/",
   "Figma": "https://www.figma.com/resources/learn-design/",
   "Excel": "https://exceljet.net/",
@@ -241,7 +241,14 @@ if page.startswith("🔍"):
         with st.expander("📉 Missing Skills & Learning Links", expanded=True):
             if missing_skills:
                 for skill in missing_skills:
+                    # Try exact match first, then case-insensitive match
                     link = resource_links.get(skill)
+                    if not link:
+                        # Try case-insensitive matching
+                        for key, value in resource_links.items():
+                            if key.lower() == skill.lower():
+                                link = value
+                                break
                     st.markdown(f"- **{skill}** — [Learn here]({link})" if link else f"- **{skill}** — No link available")
             else:
                 st.success("🎉 You have all the required skills!")
@@ -265,7 +272,15 @@ if page.startswith("🔍"):
             flat_missing = [skill for role in selected_roles for skill in job_roles_data[role] if skill not in user_skills]
             recommended = [s for s, _ in Counter(flat_missing).most_common(5)]
             for skill in recommended:
-                st.markdown(f"- **{skill}** — [Resource]({resource_links.get(skill, '#')})")
+                # Try exact match first, then case-insensitive match
+                link = resource_links.get(skill)
+                if not link:
+                    # Try case-insensitive matching
+                    for key, value in resource_links.items():
+                        if key.lower() == skill.lower():
+                            link = value
+                            break
+                st.markdown(f"- **{skill}** — [Resource]({link if link else '#'})")
 
         
         if st.button("📥 Download PDF Report"):

@@ -315,7 +315,7 @@ elif page.startswith("ℹ️"):
     **Features:**
     - 📄 Upload your resume (PDF) to auto-extract skills
     - ✍️ Enter your skills manually with proficiency levels
-    - 💼 Compare yourself with 35+ professional roles
+    - 💼 Compare yourself with 40+ professional roles
     - 📊 Visualize your skill gaps
     - 🔗 Get free resources to learn what you're missing
     - 📥 Export a personalized PDF report

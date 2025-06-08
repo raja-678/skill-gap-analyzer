@@ -5,7 +5,7 @@
 
 ## 🚀 Live Demo
 
-**Try it now:** [Skill Gap Analyzer](https://skill-gap-analyzer-zjh2jfrsljbgqzncuyysde.streamlit.app/)
+**Try it now:** [Skill Gap Analyzer](https://skill-gap-analyzer-y6w2.onrender.com)
 
 ## 📋 Table of Contents
 
@@ -126,7 +126,7 @@ fpdf>=2.5.0
 
 ### Quick Start Guide
 
-1. **Visit the App**: Go to the [live demo](https://skill-gap-analyzer-zjh2jfrsljbgqzncuyysde.streamlit.app/)
+1. **Visit the App**: Go to the [live demo](https://skill-gap-analyzer-y6w2.onrender.com)
 
 2. **Input Your Skills**:
    - **Option A**: Upload your PDF resume for automatic skill extraction

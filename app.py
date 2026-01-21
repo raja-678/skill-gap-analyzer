@@ -257,8 +257,9 @@ if page.startswith("🔍"):
             table = []
             for role, skills in role_skill_map.items():
                 required = set(skills)
-                matched = required & user_skills.keys()
-                missing = required - user_skills.keys()
+                user_skill_set = set(user_skills.keys())
+                matched = required & user_skill_set
+                missing = required - user_skill_set
                 pct = round(len(matched) / len(required) * 100, 2) if required else 0
                 table.append({
                     "Role": role,

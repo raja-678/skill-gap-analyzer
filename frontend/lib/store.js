@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 export const useAuthStore = create((set) => ({
   user: null,
-  isLoading: false,
+  isLoading: true,
 
   setUser: (user) => set({ user }),
   setLoading: (isLoading) => set({ isLoading }),
@@ -12,10 +12,12 @@ export const useAuthStore = create((set) => ({
     set({ user: null });
   },
 
-  hydrate: () => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      set({ user: JSON.parse(user) });
+  checkAuth: async () => {
+    try {
+      const response = await api.get('/api/auth/verify');
+      set({ user: response.data.user, isLoading: false });
+    } catch (error) {
+      set({ user: null, isLoading: false });
     }
   },
 }));

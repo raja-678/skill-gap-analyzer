@@ -1,0 +1,132 @@
+
+> skill-gap-analyzer-backend@1.0.0 start
+> node src/server.js
+
+✅ MongoDB connected successfully
+✅ Local catalog data layer ready
+🚀 Server running on port 5003
+Environment: development
+📬 [2026-05-04T20:33:27.448Z] GET /api/health
+📬 [2026-05-04T20:33:41.387Z] GET /api/health
+📬 [2026-05-04T20:33:41.632Z] POST /api/auth/register
+📦 Body: {"email":"cors+1777926821342@example.com","username":"cors1777926821342","password":"[redacted]","firstName":"Cors","lastName":"Tester"}
+📝 Registration request received: {
+  email: 'cors+1777926821342@example.com',
+  username: 'cors1777926821342',
+  firstName: 'Cors',
+  lastName: 'Tester',
+  userType: undefined
+}
+🔍 Checking for existing user: {
+  email: 'cors+1777926821342@example.com',
+  username: 'cors1777926821342'
+}
+🔐 Hashing password...
+💾 Creating new user...
+📤 Saving user to database...
+✅ User saved successfully: new ObjectId('69f902a5aac6d93e472546e2')
+✅ Registration successful: {
+  id: new ObjectId('69f902a5aac6d93e472546e2'),
+  email: 'cors+1777926821342@example.com',
+  username: 'cors1777926821342',
+  firstName: 'Cors',
+  lastName: 'Tester'
+}
+📬 [2026-05-04T20:33:54.970Z] POST /api/auth/register
+📦 Body: {"email":"smoke+1777926834446@example.com","username":"smoke1777926834446","password":"[redacted]","firstName":"Smoke","lastName":"Tester"}
+📝 Registration request received: {
+  email: 'smoke+1777926834446@example.com',
+  username: 'smoke1777926834446',
+  firstName: 'Smoke',
+  lastName: 'Tester',
+  userType: undefined
+}
+🔍 Checking for existing user: {
+  email: 'smoke+1777926834446@example.com',
+  username: 'smoke1777926834446'
+}
+🔐 Hashing password...
+💾 Creating new user...
+📤 Saving user to database...
+✅ User saved successfully: new ObjectId('69f902b3aac6d93e472546e3')
+✅ Registration successful: {
+  id: new ObjectId('69f902b3aac6d93e472546e3'),
+  email: 'smoke+1777926834446@example.com',
+  username: 'smoke1777926834446',
+  firstName: 'Smoke',
+  lastName: 'Tester'
+}
+📬 [2026-05-04T20:33:55.201Z] GET /api/resumes
+📬 [2026-05-04T20:33:55.219Z] GET /api/analysis/history
+📬 [2026-05-04T20:33:55.228Z] GET /api/jobs
+📬 [2026-05-04T20:34:03.227Z] POST /api/auth/register
+📦 Body: {"email":"compare+1777926843048@example.com","username":"compare1777926843048","password":"[redacted]","firstName":"Compare","lastName":"Tester"}
+📝 Registration request received: {
+  email: 'compare+1777926843048@example.com',
+  username: 'compare1777926843048',
+  firstName: 'Compare',
+  lastName: 'Tester',
+  userType: undefined
+}
+🔍 Checking for existing user: {
+  email: 'compare+1777926843048@example.com',
+  username: 'compare1777926843048'
+}
+🔐 Hashing password...
+💾 Creating new user...
+📤 Saving user to database...
+✅ User saved successfully: new ObjectId('69f902bbaac6d93e472546e4')
+✅ Registration successful: {
+  id: new ObjectId('69f902bbaac6d93e472546e4'),
+  email: 'compare+1777926843048@example.com',
+  username: 'compare1777926843048',
+  firstName: 'Compare',
+  lastName: 'Tester'
+}
+📬 [2026-05-04T20:34:03.444Z] POST /api/analysis/compare-roles
+📦 Body: {"jobRoleIds":[1,2]}
+📬 [2026-05-04T20:35:35.535Z] POST /api/auth/register
+📦 Body: {"email":"soumyadeepbatabyal2004@gmail.com","password":"[redacted]","username":"kaitokid0500","firstName":"Soumyadeep","lastName":"Batabyal"}
+📝 Registration request received: {
+  email: 'soumyadeepbatabyal2004@gmail.com',
+  username: 'kaitokid0500',
+  firstName: 'Soumyadeep',
+  lastName: 'Batabyal',
+  userType: undefined
+}
+🔍 Checking for existing user: { email: 'soumyadeepbatabyal2004@gmail.com', username: 'kaitokid0500' }
+🔐 Hashing password...
+💾 Creating new user...
+📤 Saving user to database...
+✅ User saved successfully: new ObjectId('69f90317aac6d93e472546e5')
+✅ Registration successful: {
+  id: new ObjectId('69f90317aac6d93e472546e5'),
+  email: 'soumyadeepbatabyal2004@gmail.com',
+  username: 'kaitokid0500',
+  firstName: 'Soumyadeep',
+  lastName: 'Batabyal'
+}
+📬 [2026-05-04T20:35:45.632Z] GET /api/resumes
+📬 [2026-05-04T20:35:45.636Z] GET /api/analysis/history
+📬 [2026-05-04T20:35:45.639Z] GET /api/jobs
+📬 [2026-05-04T20:35:45.642Z] GET /api/resumes
+📬 [2026-05-04T20:35:45.649Z] GET /api/analysis/history
+📬 [2026-05-04T20:35:45.652Z] GET /api/jobs
+📬 [2026-05-04T20:36:03.126Z] POST /api/resumes/upload
+📬 [2026-05-04T20:36:03.651Z] GET /api/resumes
+📬 [2026-05-04T20:36:03.656Z] GET /api/analysis/history
+📬 [2026-05-04T20:36:03.660Z] GET /api/jobs
+📬 [2026-05-04T20:36:17.151Z] POST /api/analysis/compare-roles
+📦 Body: {"jobRoleIds":[1,3]}
+📬 [2026-05-04T20:36:29.271Z] GET /api/resumes
+📬 [2026-05-04T20:36:29.284Z] GET /api/analysis/history
+📬 [2026-05-04T20:36:29.299Z] GET /api/jobs
+📬 [2026-05-04T20:36:36.475Z] GET /api/resumes
+📬 [2026-05-04T20:36:36.487Z] GET /api/analysis/history
+📬 [2026-05-04T20:36:36.491Z] GET /api/jobs
+📬 [2026-05-04T20:36:36.494Z] GET /api/resumes
+📬 [2026-05-04T20:36:36.498Z] GET /api/analysis/history
+📬 [2026-05-04T20:36:36.501Z] GET /api/jobs
+📬 [2026-05-04T20:41:46.210Z] GET /api/resumes
+📬 [2026-05-04T20:41:46.215Z] GET /api/analysis/history
+📬 [2026-05-04T20:41:46.219Z] GET /api/jobs

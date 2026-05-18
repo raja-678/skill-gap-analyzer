@@ -4,19 +4,35 @@ export const useAuthStore = create((set) => ({
   user: null,
   isLoading: true,
 
-  setUser: (user) => set({ user }),
-  setLoading: (isLoading) => set({ isLoading }),
-
-  logout: () => {
-    localStorage.removeItem('user');
-    set({ user: null });
+  setUser: (user) => {
+    localStorage.setItem('user', JSON.stringify(user));
+    set({ user, isLoading: false });
   },
 
-  checkAuth: async () => {
+  setLoading: (isLoading) => set({ isLoading }),
+
+  logout: async () => {
     try {
-      const response = await api.get('/api/auth/verify');
-      set({ user: response.data.user, isLoading: false });
+      await fetch('http://localhost:5003/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include'
+      });
+    } catch (e) {}
+    localStorage.removeItem('user');
+    localStorage.removeItem('targetRole');
+    set({ user: null, isLoading: false });
+  },
+
+  checkAuth: () => {
+    try {
+      const savedUser = localStorage.getItem('user');
+      if (savedUser) {
+        set({ user: JSON.parse(savedUser), isLoading: false });
+        return;
+      }
+      set({ user: null, isLoading: false });
     } catch (error) {
+      localStorage.removeItem('user');
       set({ user: null, isLoading: false });
     }
   },
@@ -39,9 +55,11 @@ export const useAnalysisStore = create((set) => ({
   setLoading: (isLoading) => set({ isLoading }),
 
   hydrate: () => {
-    const targetRole = localStorage.getItem('targetRole');
-    if (targetRole) {
-      set({ targetRole: JSON.parse(targetRole) });
-    }
+    try {
+      const targetRole = localStorage.getItem('targetRole');
+      if (targetRole) {
+        set({ targetRole: JSON.parse(targetRole) });
+      }
+    } catch (e) {}
   },
 }));

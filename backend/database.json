@@ -1,0 +1,5 @@
+{
+  "databaseUrl": {
+    "ENV": "DATABASE_URL"
+  }
+}

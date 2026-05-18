@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import api from '@/lib/api';
 import { useAuthStore } from '@/lib/store';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -10,30 +9,79 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const setUser = useAuthStore((state) => state.setUser);
+  const { user, isLoading, setUser } = useAuthStore((state) => ({
+    user: state.user,
+    isLoading: state.isLoading,
+    setUser: state.setUser
+  }));
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.push('/dashboard');
+    }
+  }, [isLoading, user, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await api.post('/auth/login', { email, password });
-      const { user } = response.data;
+      const response = await fetch('http://localhost:5003/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ email, password })
+      });
 
-      // Save to store
-      setUser(user);
+      const data = await response.json();
+      console.log('Full response:', data);
 
-      // Save non-sensitive profile only; JWT is in an httpOnly cookie.
-      localStorage.setItem('user', JSON.stringify(user));
+      if (!response.ok) {
+        throw new Error(data.error || 'Login failed');
+      }
+
+      // Handle both { user: {...} } and { success: true, user: {...} }
+      const userData = data.user || data;
+      console.log('User data to save:', userData);
+
+      if (!userData || !userData.email) {
+        throw new Error('Invalid response from server');
+      }
+
+      // Save directly to localStorage
+      const userString = JSON.stringify(userData);
+      localStorage.setItem('user', userString);
+      console.log('Saved to localStorage:', localStorage.getItem('user'));
+
+      // Update store
+      setUser(userData);
+      console.log('Store updated');
 
       toast.success('Login successful!');
-      router.push('/dashboard');
+
+      // Navigate after short delay
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 200);
+
     } catch (error) {
-      toast.error(error.response?.data?.error || 'Login failed');
+      console.error('Login error:', error);
+      toast.error(error.message || 'Login failed');
     } finally {
       setLoading(false);
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

@@ -12,11 +12,16 @@ import LearningPathTab from '@/components/Dashboard/LearningPathTab';
 import JobFitTab from '@/components/Dashboard/JobFitTab';
 import CareerChat from '@/components/Chat/CareerChat';
 import ProfileTab from '@/components/Dashboard/ProfileTab';
+import ErrorBoundary from '@/components/common/ErrorBoundary';
+import SkeletonCard from '@/components/common/SkeletonCard';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function Dashboard() {
   const router = useRouter();
-  const user = useAuthStore((state) => state.user);
+  const { user, isLoading } = useAuthStore((state) => ({
+    user: state.user,
+    isLoading: state.isLoading
+  }));
   const { setTargetRole, setTargetRolePercentage } = useAnalysisStore();
   const [resumes, setResumes] = useState([]);
   const [analyses, setAnalyses] = useState([]);
@@ -25,15 +30,42 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const [loading, setLoading] = useState(true);
   const [targetRole, setLocalTargetRole] = useState(null);
+  const [welcomeBanner, setWelcomeBanner] = useState(false);
+  const [queryRefreshRequested, setQueryRefreshRequested] = useState(false);
 
   useEffect(() => {
-    if (!user) {
+    if (!router.isReady) return;
+
+    const { tab, welcome } = router.query;
+    if (typeof tab === 'string') {
+      setActiveTab(tab);
+      if (tab === 'overview') {
+        setQueryRefreshRequested(true);
+      }
+    }
+
+    if (welcome === 'true') {
+      setWelcomeBanner(true);
+    }
+  }, [router.isReady, router.query]);
+
+  useEffect(() => {
+    if (!isLoading && !user) {
       router.push('/auth/login');
       return;
     }
-    fetchData();
-    loadTargetRole();
-  }, [user, router]);
+    if (!isLoading && user) {
+      fetchData();
+      loadTargetRole();
+    }
+  }, [isLoading, user, router]);
+
+  useEffect(() => {
+    if (!isLoading && user && queryRefreshRequested) {
+      fetchData();
+      setQueryRefreshRequested(false);
+    }
+  }, [isLoading, user, queryRefreshRequested]);
 
   const fetchData = async () => {
     try {
@@ -78,7 +110,18 @@ export default function Dashboard() {
     }
   };
 
-  if (!user) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading your dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) return null;
 
   return (
     <>
@@ -87,6 +130,12 @@ export default function Dashboard() {
       </Head>
       <Toaster />
 
+      {welcomeBanner && (
+        <div className="mb-6 rounded-xl border border-green-200 bg-green-50 p-5 text-green-900">
+          <p className="text-lg font-semibold">Your resume has been analyzed! Here's your career readiness snapshot.</p>
+        </div>
+      )}
+
       <PersistentHeader />
 
       <div className="flex min-h-screen bg-gray-50" style={{ marginTop: '80px' }}>
@@ -94,42 +143,59 @@ export default function Dashboard() {
 
         <main className="flex-1 p-8" style={{ marginLeft: '256px' }}>
           {loading ? (
-            <div className="text-center py-12 text-gray-500">Loading...</div>
+            <div className="grid grid-cols-1 gap-6">
+              <SkeletonCard />
+              <SkeletonCard />
+            </div>
           ) : (
             <>
               {/* Overview Tab */}
               {activeTab === 'overview' && (
-                <OverviewTab careerSnapshot={careerSnapshot} resumes={resumes} analyses={analyses} />
+                <ErrorBoundary>
+                  <OverviewTab careerSnapshot={careerSnapshot} resumes={resumes} analyses={analyses} user={user} loading={loading} />
+                </ErrorBoundary>
               )}
 
               {/* My Skills Tab */}
               {activeTab === 'skills' && (
-                <MySkillsTab />
+                <ErrorBoundary>
+                  <MySkillsTab loading={loading} />
+                </ErrorBoundary>
               )}
 
               {/* Role Analysis Tab */}
               {activeTab === 'role-analysis' && (
-                <RoleAnalysisTab analyses={analyses} />
+                <ErrorBoundary>
+                  <RoleAnalysisTab analyses={analyses} loading={loading} />
+                </ErrorBoundary>
               )}
 
               {/* Learning Path Tab */}
               {activeTab === 'learning-path' && (
-                <LearningPathTab />
+                <ErrorBoundary>
+                  <LearningPathTab loading={loading} />
+                </ErrorBoundary>
               )}
 
               {/* Job Fit Tab */}
               {activeTab === 'job-fit' && (
-                <JobFitTab jobs={jobs} onCompare={fetchData} />
+                <ErrorBoundary>
+                  <JobFitTab jobs={jobs} onCompare={fetchData} loading={loading} />
+                </ErrorBoundary>
               )}
 
               {/* Chat Tab */}
               {activeTab === 'chat' && (
-                <CareerChat />
+                <ErrorBoundary>
+                  <CareerChat />
+                </ErrorBoundary>
               )}
 
               {/* Profile Tab */}
               {activeTab === 'profile' && (
-                <ProfileTab />
+                <ErrorBoundary>
+                  <ProfileTab />
+                </ErrorBoundary>
               )}
             </>
           )}

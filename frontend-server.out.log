@@ -1,0 +1,14 @@
+
+> skill-gap-analyzer-frontend@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3003
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.7s
+ ○ Compiling /auth/signup ...
+ ✓ Compiled /auth/signup in 2.6s (425 modules)
+ ✓ Compiled in 282ms (425 modules)
+ GET /auth/signup 200 in 3472ms

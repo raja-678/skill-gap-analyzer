@@ -5,8 +5,7 @@ import Navbar from '@/components/common/Navbar';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    // Hydrate auth store on app load
-    useAuthStore.getState().hydrate();
+    useAuthStore.getState().checkAuth();
   }, []);
 
   return (
